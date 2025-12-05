@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SharedLibrary\src\Shared\Shared.csproj" />
+    <ProjectReference Include="src\Smdb.Core\Smdb.Core.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
@@ -9,6 +10,8 @@
     <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
+
 
 </Project>
