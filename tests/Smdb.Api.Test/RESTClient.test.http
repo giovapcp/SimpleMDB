@@ -1,0 +1,57 @@
+### Base URL
+@host = http://localhost:8080
+@contentType = application/json
+
+############################################################
+# GET /api/v1/movies?page=1&size=10
+############################################################
+### Read paginated movies
+GET {{host}}/api/v1/movies?page=1&size=10
+Accept: application/json
+
+
+############################################################
+# POST /api/v1/movies
+############################################################
+### Create a new movie
+POST {{host}}/api/v1/movies
+Content-Type: {{contentType}}
+
+{
+  "id": -1,
+  "title": "Inception",
+  "year": 2010,
+  "description": "A skilled thief who enters dreams to steal secrets."
+}
+
+
+############################################################
+# GET /api/v1/movies/:id
+############################################################
+### Read a single movie by ID
+GET {{host}}/api/v1/movies/1
+Accept: application/json
+
+
+############################################################
+# PUT /api/v1/movies/:id
+############################################################
+### Update an existing movie
+PUT {{host}}/api/v1/movies/1
+Content-Type: {{contentType}}
+
+{
+  "title": "Joker 2",
+  "year": 2020,
+  "description": "A man that is a joke."
+}
+
+
+############################################################
+# DELETE /api/v1/movies/:id
+############################################################
+### Delete a movie by ID
+DELETE {{host}}/api/v1/movies/1
+Accept: application/json
+
+
