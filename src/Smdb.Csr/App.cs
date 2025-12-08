@@ -17,7 +17,20 @@ public class App : HttpServer
         router.Use(HttpUtils.ParseRequestQueryString);
         router.Use(HttpUtils.ServeStaticFiles);
         router.UseSimpleRouteMatching();
-        router.MapGet("/", async (req, res, props, next) => { res.Redirect("/index.html"); await next(); });
-        router.MapGet("/movies", async (req, res, props, next) =>{ res.Redirect("/movies/index.html"); await next(); });
+
+        router.MapGet("/", LandingPageIndexRedirect);
+        router.MapGet("/movies", MoviesPageIndexRedirect);
+    }
+
+    public static async Task LandingPageIndexRedirect(HttpListnerRequest req, HttpListnerResponse res, Hashtable props, Func<Task> next)
+    {
+        res.Redirect("/index.html"); 
+        await next();
+    }
+
+    public static async Task MoviesPageIndexRedirect(HttpListnerRequest req, HttpListnerResponse res, Hashtable props, Func<Task> next)
+    {
+        res.Redirect("/movies/index.html"); 
+        await next();
     }
 }
