@@ -20,10 +20,12 @@ export async function apiFetch(path, opts = {})
         ...opts,
         headers: { ...(opts.headers || {}), ...jsonHeaders() }
     };
+    
     const res = await fetch(url, init);
     const text = await res.text();
     let payload = null;
     try { payload = text ? JSON.parse(text) : null; } catch { payload = text; }
+
     if (!res.ok) {
         const msg = (payload && (payload.message || payload.error)) ||
             `${res.status} ${res.statusText}`;
