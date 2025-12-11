@@ -28,6 +28,17 @@ public class App : HttpServer
         router.UseParametrizedRouteMatching();
         router.UseRouter("/api/v1", apiRouter);
         apiRouter.UseRouter("/movies", movieRouter);
+
+        router.MapGet("/", async (req, res, props, next) =>
+    {
+        await JsonUtils.SendResultResponse(
+            req,
+            res,
+            props,
+            new Shared.Http.Result<object>(new { message = "API running" })
+        );
+    });
+
     }
 
 }
